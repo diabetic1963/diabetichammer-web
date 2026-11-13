@@ -6,28 +6,19 @@
   <meta name="theme-color" content="#101820">
   <meta name="description" content="DiabeticHammer – Cukorbetegen is lehet! Közösség, tapasztalatok és bátorítás.">
   <title>DiabeticHammer – Cukorbetegen is lehet!</title>
-  <style>
-    *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#101820;color:#f4f7f8;line-height:1.6}
-    header{padding:28px 20px;text-align:center;background:#172630;border-bottom:3px solid #40c4a0}
-    h1{margin:0;color:#65dfbd;font-size:clamp(2rem,8vw,3.2rem)}header p{margin:8px 0 0;font-size:1.1rem}
-    main{max-width:760px;margin:32px auto;padding:0 18px}
-    .welcome{background:#1b2b35;border-radius:18px;padding:24px;border:1px solid #35505d}
-    h2{color:#65dfbd;margin-top:0}.note{color:#c5d2d8}
-    footer{text-align:center;padding:30px 15px;color:#9fb0b8;font-size:.9rem}
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>DiabeticHammer</h1>
-    <p>Cukorbetegen is lehet!</p>
-  </header>
+  <header><h1>DiabeticHammer</h1><p>Cukorbetegen is lehet!</p></header>
   <main>
     <section class="welcome">
       <h2>Üdvözlünk!</h2>
-      <p>Ez a DiabeticHammer közösségi oldal kezdőlapja.</p>
-      <p class="note">Tapasztalatok, mindennapi történetek és bátorítás – mert cukorbetegen is lehet teljes, aktív életet élni.</p>
+      <p>Tapasztalatok, mindennapi történetek és bátorítás – mert cukorbetegen is lehet teljes, aktív életet élni.</p>
+      <p class="muted">Egy közösség, ahol megoszthatjuk, amit a mindennapokból tanulunk.</p>
     </section>
+    <section aria-labelledby="posts-title"><h2 id="posts-title">Friss bejegyzések</h2><div id="posts"><p class="muted">Bejegyzések betöltése…</p></div></section>
   </main>
   <footer>DiabeticHammer · Cukorbetegen is lehet!</footer>
+  <script src="site.js"></script>
 </body>
 </html>

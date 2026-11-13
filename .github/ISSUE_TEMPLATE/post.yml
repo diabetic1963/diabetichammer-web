@@ -1,0 +1,12 @@
+name: Új DiabeticHammer-bejegyzés
+description: Új történet vagy tapasztalat megosztása a DiabeticHammer oldalon
+title: "[BEJEGYZÉS] "
+body:
+  - type: textarea
+    id: story
+    attributes:
+      label: A bejegyzés szövege
+      description: Írd ide a történetedet. Képet is csatolhatsz a szövegmezőhöz.
+      placeholder: "Ma szeretnék megosztani veletek egy tapasztalatot..."
+    validations:
+      required: true

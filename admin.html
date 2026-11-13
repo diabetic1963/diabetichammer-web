@@ -1,1 +1,28 @@
-<!doctype html><html lang="hu"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DiabeticHammer – Szerkesztő</title><link rel="stylesheet" href="style.css"></head><body><header><h1>DiabeticHammer</h1><p>Bejegyzés szerkesztése</p></header><main><section class="welcome"><h2>Új bejegyzés</h2><p class="muted">Ez a szerkesztő a későbbi közzétételi funkció előkészítése. A biztonságos publikáláshoz szerveroldali beállítások is szükségesek.</p><label for="title">Cím</label><input id="title" maxlength="120" style="display:block;width:100%;padding:12px;margin:6px 0 16px"><label for="body">Szöveg</label><textarea id="body" rows="8" style="display:block;width:100%;padding:12px;margin:6px 0 16px"></textarea><button id="preview" type="button" style="padding:12px 18px">Előnézet</button><p id="status" class="muted" aria-live="polite"></p></section></main><script src="admin.js"></script></body></html>
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101820">
+  <title>DiabeticHammer – Új bejegyzés</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><h1>DiabeticHammer</h1><p>Új bejegyzés</p></header>
+  <main>
+    <section class="welcome">
+      <h2>Írj új történetet!</h2>
+      <p>Itt tudsz új bejegyzést indítani. A Közzététel gomb a GitHub biztonságos szerkesztőjét nyitja meg, ahol bejelentkezés után elküldheted a szöveget.</p>
+      <ol>
+        <li>Adj címet a történetnek.</li>
+        <li>Írd meg a bejegyzést.</li>
+        <li>Ha képet is szeretnél, a GitHub szövegmezőjébe csatolhatod.</li>
+        <li>A végén nyomd meg a „Submit new issue” gombot. Ezután a bejegyzés megjelenik a főoldalon.</li>
+      </ol>
+      <p><a class="publish-link" href="https://github.com/diabetic1963/diabetichammer-web/issues/new?template=post.yml">Új bejegyzés közzététele</a></p>
+      <p class="muted">Fontos: a próbaoldal és a bejegyzések nyilvánosak. Ne írj személyes, egészségügyi vagy más bizalmas adatot. A bejegyzés a GitHubon is megjelenik.</p>
+      <p><a href="./">Vissza a főoldalra</a></p>
+    </section>
+  </main>
+</body>
+</html>

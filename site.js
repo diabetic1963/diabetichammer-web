@@ -1,12 +1,13 @@
 const REPO_API = "https://api.github.com/repos/diabetic1963/diabetichammer-web";
 const POST_PREFIX = "[BEJEGYZÉS]";
 
-function sectionsFromIssue(body) {
-  const titleMatch = (body || "").match(/### Az írás címe\s*\n+([\s\S]*?)(?=\n### |$)/i);
-  const storyMatch = (body || "").match(/### A napi írásod\s*\n+([\s\S]*?)(?=\n### |$)/i);
+function sectionsFromIssue(body, issueTitle = "") {
+  const source = body || "";
+  const titleMatch = source.match(/###\s*Az írás címe\s*\r?\n+([\s\S]*?)(?=\r?\n###\s|$)/i);
+  const storyMatch = source.match(/###\s*A napi írásod\s*\r?\n+([\s\S]*?)(?=\r?\n###\s|$)/i);
   return {
-    title: titleMatch ? titleMatch[1].trim() : "",
-    story: storyMatch ? storyMatch[1].trim() : (body || "")
+    title: titleMatch?.[1]?.trim() || issueTitle.replace(/^\[BEJEGYZÉS\]\s*/i, "").trim() || "Napi írás",
+    story: storyMatch?.[1]?.trim() || ""
   };
 }
 
@@ -31,8 +32,9 @@ async function loadPosts() {
     if (!response.ok) throw new Error("A bejegyzések most nem érhetők el.");
     const issues = await response.json();
     const posts = issues
-      .filter(item => !item.pull_request && item.user?.login === "diabetic1963" && item.title && item.title.startsWith(POST_PREFIX))
-      .map(item => ({...item, parsed: sectionsFromIssue(item.body)}))
+      .filter(item => !item.pull_request && item.user?.login === "diabetic1963" && item.title?.startsWith(POST_PREFIX))
+      .map(item => ({ ...item, parsed: sectionsFromIssue(item.body, item.title) }))
+      .filter(item => item.parsed.story)
       .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
     root.replaceChildren();
@@ -48,7 +50,7 @@ async function loadPosts() {
       const article = document.createElement("article");
       article.className = "post";
       const title = document.createElement("h3");
-      title.textContent = post.parsed.title || "Napi írás";
+      title.textContent = post.parsed.title;
       const date = document.createElement("div");
       date.className = "date";
       date.textContent = new Date(post.created_at).toLocaleDateString("hu-HU", {

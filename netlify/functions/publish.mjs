@@ -37,7 +37,7 @@ export default async (request) => {
   if (data.image) {
     const image = data.image;
     const allowed = { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp" };
-    if (!allowed[image.type] || typeof image.base64 !== "string" || image.base64.length > 7_000_000) {
+    if (!allowed[image.type] || typeof image.base64 !== "string" || image.base64.length > 5_600_000) {
       return json({ error: "A fénykép formátuma vagy mérete nem megfelelő." }, 400);
     }
     const safeName = String(image.name || "foto").replace(/[^a-zA-Z0-9._-]/g, "-").slice(-80);

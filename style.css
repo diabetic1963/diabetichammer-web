@@ -29,3 +29,35 @@ footer{padding:32px max(6vw,22px);border-top:1px solid var(--line);display:flex;
 .honest-mark span{position:absolute;right:8px;top:8px;font-size:24px;color:var(--orange)}
 .honest-copy{max-width:760px}.honest-copy .section-kicker{color:var(--lime)}.honest-copy h2{font:800 clamp(32px,4vw,49px)/1.12 Manrope;letter-spacing:-2px;margin:16px 0}.honest-copy h2 em{font-style:normal;color:var(--lime)}.honest-copy p{max-width:680px;color:#d7e4d9;font-size:15px;line-height:1.85;margin:0 0 20px}.text-link{display:inline-flex;align-items:center;gap:13px;color:var(--lime);font-size:13px;font-weight:800;text-decoration:none;border-bottom:1px solid #d4ed8366;padding-bottom:5px}.text-link:hover{gap:19px}
 @media(max-width:760px){.honest-section{padding:58px 0}.honest-inner{grid-template-columns:1fr;gap:25px}.honest-mark{width:104px;height:104px;font-size:27px}.honest-copy h2{font-size:34px;letter-spacing:-1.5px}}
+
+
+/* Finomított, egységes felhasználói élmény */
+:root{--focus:#f2a27f}
+.skip-link{position:fixed;left:16px;top:12px;z-index:1000;padding:12px 16px;background:var(--lime);color:var(--ink);font-weight:800;border-radius:6px;transform:translateY(-160%);transition:transform .2s}
+.skip-link:focus{transform:translateY(0)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:4px}
+.site-header{box-shadow:0 5px 24px #172b2508}
+nav a:not(.nav-cta){position:relative}
+nav a:not(.nav-cta):after{content:"";position:absolute;left:0;right:100%;bottom:-7px;height:2px;background:var(--green);transition:right .2s}
+nav a:not(.nav-cta):hover:after{right:0}
+.hero{isolation:isolate}
+.hero-disc{transition:transform .35s ease,box-shadow .35s ease}
+.hero-art:hover .hero-disc{transform:rotate(-3deg) translateY(-4px);box-shadow:0 0 0 13px #ffffff0b,0 32px 85px #061d1566}
+.value-card,.everyday-card,.post{transition:transform .22s ease,box-shadow .22s ease}
+.value-card:hover,.post:hover{transform:translateY(-4px);box-shadow:0 22px 55px #193b2b18}
+.everyday-card:hover{transform:translateY(-3px)}
+.share-strip{position:relative;overflow:hidden}
+.share-strip:after{content:"DH";position:absolute;right:20px;bottom:-48px;font:800 130px/1 Manrope;color:#ffffff0b;pointer-events:none}
+footer{background:#f0f0e8}
+footer small{line-height:1.7}
+@media(max-width:760px){
+  .site-header{position:relative}
+  nav{row-gap:13px}
+  .hero{min-height:0}
+  .hero-note{line-height:1.6}
+  .section-wrap{padding-left:21px;padding-right:21px}
+  .value-card:hover,.post:hover,.everyday-card:hover{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .skip-link,nav a:not(.nav-cta):after,.hero-disc,.value-card,.everyday-card,.post{transition:none}
+}

@@ -5,9 +5,11 @@ function sectionsFromIssue(body, issueTitle = "") {
   const source = body || "";
   const titleMatch = source.match(/###\s*Az írás címe\s*\r?\n+([\s\S]*?)(?=\r?\n###\s|$)/i);
   const storyMatch = source.match(/###\s*A napi írásod\s*\r?\n+([\s\S]*?)(?=\r?\n###\s|$)/i);
+  const imageMatch = source.match(/!\[[^\]]*\]\((https:\/\/raw\.githubusercontent\.com\/[^\s)]+)\)/i);
   return {
     title: titleMatch?.[1]?.trim() || issueTitle.replace(/^\[BEJEGYZÉS\]\s*/i, "").trim() || "Napi írás",
-    story: storyMatch?.[1]?.trim() || ""
+    story: (storyMatch?.[1] || "").replace(/\n*\s*!\[[^\]]*\]\(https:\/\/raw\.githubusercontent\.com\/[^\s)]+\)\s*$/i, "").trim(),
+    image: imageMatch?.[1] || ""
   };
 }
 
@@ -26,8 +28,7 @@ async function loadPosts() {
   if (!root) return;
   try {
     const response = await fetch(REPO_API + "/issues?state=open&per_page=100", {
-      headers: { "Accept": "application/vnd.github+json" },
-      cache: "no-store"
+      headers: { "Accept": "application/vnd.github+json" }, cache: "no-store"
     });
     if (!response.ok) throw new Error("A bejegyzések most nem érhetők el.");
     const issues = await response.json();
@@ -53,14 +54,20 @@ async function loadPosts() {
       title.textContent = post.parsed.title;
       const date = document.createElement("div");
       date.className = "date";
-      date.textContent = new Date(post.created_at).toLocaleDateString("hu-HU", {
-        year: "numeric", month: "long", day: "numeric"
-      });
+      date.textContent = new Date(post.created_at).toLocaleDateString("hu-HU", { year: "numeric", month: "long", day: "numeric" });
       article.append(title, date);
       addPostBody(article, post.parsed.story);
+      if (post.parsed.image) {
+        const img = document.createElement("img");
+        img.src = post.parsed.image;
+        img.alt = "A bejegyzéshez feltöltött fénykép";
+        img.loading = "lazy";
+        img.style.cssText = "display:block;width:100%;height:auto;max-height:520px;object-fit:contain;border-radius:14px;margin-top:16px";
+        article.append(img);
+      }
       root.append(article);
     }
-  } catch (error) {
+  } catch {
     root.textContent = "A napi írások most nem érhetők el. Kérjük, próbáld újra később.";
   }
 }

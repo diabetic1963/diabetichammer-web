@@ -12,7 +12,7 @@ photoInput?.addEventListener("change", () => {
     photoPreview.style.display = "none";
     return;
   }
-  if (!["image/jpeg", "image/png", "image/webp"].includes(file.type) || file.size > 5 * 1024 * 1024) {
+  if (!["image/jpeg", "image/png", "image/webp"].includes(file.type) || file.size > 4 * 1024 * 1024) {
     photoInput.value = "";
     photoPreview.removeAttribute("src");
     photoPreview.style.display = "none";
@@ -35,7 +35,7 @@ form?.addEventListener("submit", async (event) => {
     statusEl.textContent = "Kérlek, töltsd ki a jelszó, cím és szöveg mezőt.";
     return;
   }
-  if (photo && (!["image/jpeg", "image/png", "image/webp"].includes(photo.type) || photo.size > 5 * 1024 * 1024)) {
+  if (photo && (!["image/jpeg", "image/png", "image/webp"].includes(photo.type) || photo.size > 4 * 1024 * 1024)) {
     statusEl.textContent = "A fénykép nem megfelelő. JPG, PNG vagy WebP legyen, legfeljebb 5 MB.";
     return;
   }

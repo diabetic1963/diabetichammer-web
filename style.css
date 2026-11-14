@@ -8,3 +8,13 @@
 #mindennapok .post{padding:30px;min-height:205px}
 #bemutatkozas{scroll-margin-top:20px}
 @media(max-width:760px){#mindennapok{padding-top:58px}#mindennapok .post{padding:24px}}
+
+
+/* Napi szerkesztő űrlap */
+#post-form{display:grid;gap:10px;margin-top:24px}
+#post-form label{font:700 13px Manrope,sans-serif;color:var(--text);margin-top:10px}
+#post-form input,#post-form textarea{width:100%;border:1px solid #426068;background:#0b191d;color:var(--text);border-radius:7px;padding:14px 15px;font:15px/1.6 "DM Sans",Arial,sans-serif;outline:none}
+#post-form textarea{resize:vertical;min-height:210px}
+#post-form input:focus,#post-form textarea:focus{border-color:var(--mint);box-shadow:0 0 0 3px #65e2bd18}
+#post-form button:disabled{opacity:.55;cursor:wait;transform:none}
+#status{min-height:24px;font-size:13px}

@@ -22,7 +22,7 @@ export default async (request) => {
   }
 
   const authorization = request.headers.get("authorization") || "";
-  const suppliedPassword = authorization.replace(/^Bearer\\s+/i, "");
+  const suppliedPassword = authorization.replace(/^Bearer\s+/i, "");
   if (!safeEqual(suppliedPassword, expectedPassword)) {
     return json({ error: "Hibás szerkesztői jelszó." }, 401);
   }
@@ -47,7 +47,13 @@ export default async (request) => {
     },
     body: JSON.stringify({
       title: `[BEJEGYZÉS] ${title}`,
-      body: `### Az írás címe\\n\\n${title}\\n\\n### A napi írásod\\n\\n${body}`
+      body: `### Az írás címe
+
+${title}
+
+### A napi írásod
+
+${body}`
     })
   });
 

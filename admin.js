@@ -16,7 +16,7 @@ photoInput?.addEventListener("change", () => {
     photoInput.value = "";
     photoPreview.removeAttribute("src");
     photoPreview.style.display = "none";
-    statusEl.textContent = "JPG, PNG vagy WebP képet válassz, legfeljebb 5 MB méretben.";
+    statusEl.textContent = "JPG, PNG vagy WebP képet válassz, legfeljebb 4 MB méretben.";
     return;
   }
   photoPreview.src = URL.createObjectURL(file);
@@ -36,7 +36,7 @@ form?.addEventListener("submit", async (event) => {
     return;
   }
   if (photo && (!["image/jpeg", "image/png", "image/webp"].includes(photo.type) || photo.size > 4 * 1024 * 1024)) {
-    statusEl.textContent = "A fénykép nem megfelelő. JPG, PNG vagy WebP legyen, legfeljebb 5 MB.";
+    statusEl.textContent = "A fénykép nem megfelelő. JPG, PNG vagy WebP legyen, legfeljebb 4 MB.";
     return;
   }
 

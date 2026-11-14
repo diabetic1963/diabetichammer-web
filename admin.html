@@ -10,6 +10,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .photo-field{display:grid;gap:12px;margin:18px 0}.photo-field input{max-width:100%;padding:12px;border:1px solid #315064;border-radius:12px;color:#eaf2f8;background:#102638}
+    .photo-preview{display:none;max-width:100%;max-height:320px;object-fit:contain;border-radius:14px;border:1px solid #315064}
+    .admin-submit:disabled{opacity:.6;cursor:wait}
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -20,7 +25,7 @@
     <section class="admin-hero">
       <div class="eyebrow"><span></span> DiabeticHammer · személyes napló</div>
       <h1>A napi <em>írásaim</em></h1>
-      <p class="hero-lead">Írd meg a mai gondolatodat, tapasztalatodat vagy történetedet. Közzététel után megjelenik a főoldal Történetek részében. Fényképet nem kell feltöltened.</p>
+      <p class="hero-lead">Írd meg a mai gondolatodat, és ha szeretnéd, válassz hozzá fényképet a telefonod galériájából. Közzététel után megjelenik a történetek között.</p>
     </section>
     <section class="admin-panel">
       <div class="admin-panel-heading"><span class="value-icon">✍</span><div><h2>Új napi írás</h2><p class="muted">A bejegyzés nyilvánosan megjelenik a weboldalon.</p></div></div>
@@ -31,10 +36,16 @@
         <input id="title" name="title" type="text" maxlength="120" placeholder="Például: Egy újabb aktív nap" required>
         <label for="body">A napi írásod</label>
         <textarea id="body" name="body" rows="10" maxlength="20000" placeholder="Ide írd a mai gondolataidat…" required></textarea>
+        <div class="photo-field">
+          <label for="photo">Fénykép (nem kötelező)</label>
+          <input id="photo" name="photo" type="file" accept="image/jpeg,image/png,image/webp">
+          <img id="photo-preview" class="photo-preview" alt="A kiválasztott fénykép előnézete">
+          <small class="muted">JPG, PNG vagy WebP · legfeljebb 5 MB</small>
+        </div>
         <button class="button button-primary admin-submit" id="publish" type="submit">Közzététel <span>↗</span></button>
         <p id="status" role="status" aria-live="polite" class="muted"></p>
       </form>
-      <p class="admin-note"><strong>Fontos:</strong> a szöveg nyilvános, és a főoldalon is megjelenik. Ne írj bele jelszót, lakcímet vagy más bizalmas adatot. Fotófeltöltés nincs bekapcsolva.</p>
+      <p class="admin-note"><strong>Fontos:</strong> a szöveg és a kiválasztott fénykép nyilvános lesz. Ne tölts fel bizalmas adatot tartalmazó képet.</p>
     </section>
     <p class="admin-back"><a href="./#bejegyzesek">← Vissza a korábbi írásokhoz</a></p>
   </main>

@@ -1,12 +1,20 @@
-name: Új DiabeticHammer-bejegyzés
-description: Új történet vagy tapasztalat megosztása a DiabeticHammer oldalon
-title: "[BEJEGYZÉS] "
+name: Új napi írás
+description: Napi gondolat vagy személyes tapasztalat közzététele a DiabeticHammer oldalon
+title: "[BEJEGYZÉS] Napi írás"
 body:
+  - type: input
+    id: post_title
+    attributes:
+      label: Az írás címe
+      description: Rövid, kifejező címet adj a napi bejegyzésednek.
+      placeholder: "Például: Egy újabb aktív nap"
+    validations:
+      required: true
   - type: textarea
     id: story
     attributes:
-      label: A bejegyzés szövege
-      description: Írd ide a történetedet. Képet is csatolhatsz a szövegmezőhöz.
-      placeholder: "Ma szeretnék megosztani veletek egy tapasztalatot..."
+      label: A napi írásod
+      description: Ide írd a teljes szöveget. Fotófeltöltést most nem használunk.
+      placeholder: "Ma ezt szeretném megosztani veletek..."
     validations:
       required: true

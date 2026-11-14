@@ -3,23 +3,65 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101820">
-  <meta name="description" content="DiabeticHammer – Cukorbetegen is lehet! Közösség, tapasztalatok és bátorítás.">
+  <meta name="theme-color" content="#0b1518">
+  <meta name="description" content="DiabeticHammer – Cukorbetegen is lehet! Valódi történetek, mozgás, tapasztalatok és bátorítás.">
   <title>DiabeticHammer – Cukorbetegen is lehet!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header><h1>DiabeticHammer</h1><p>Cukorbetegen is lehet!</p></header>
-  <main>
-    <section class="welcome">
-      <h2>Üdvözlünk!</h2>
-      <p>Tapasztalatok, mindennapi történetek és bátorítás – mert cukorbetegen is lehet teljes, aktív életet élni.</p>
-      <p class="muted">Egy közösség, ahol megoszthatjuk, amit a mindennapokból tanulunk.</p>
-      <p><a class="publish-link" href="admin.html">Új bejegyzés írása</a></p>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="DiabeticHammer – főoldal">
+      <span class="brand-mark">DH</span>
+      <span class="brand-name">Diabetic<span>Hammer</span></span>
+    </a>
+    <nav aria-label="Fő navigáció">
+      <a href="#kuldetes">Küldetésünk</a>
+      <a href="#bejegyzesek">Történetek</a>
+      <a class="nav-cta" href="admin.html">Csatlakozz / Írj</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <div class="eyebrow"><span></span> Erő. Kitartás. Közösség.</div>
+        <h1>Cukorbetegen is <em>lehet!</em></h1>
+        <p class="hero-lead">A diagnózis nem a történet vége. Lehet új célod, lehet erőd, és lehet teljes, aktív életed.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#bejegyzesek">Olvasd a történeteket <span>↗</span></a>
+          <a class="button button-quiet" href="admin.html">Saját történetet írok</a>
+        </div>
+        <div class="hero-note"><span class="note-line"></span> Valódi tapasztalatok. Őszinte bátorítás.</div>
+      </div>
+      <div class="hero-art" aria-label="DiabeticHammer jelvény">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="emblem"><span class="emblem-small">DIABETIC</span><strong>HAMMER</strong><span class="emblem-bottom">NE ADD FEL.</span></div>
+        <div class="floating-tag tag-top">MINDEN NAP SZÁMÍT</div>
+        <div class="floating-tag tag-bottom"><span>✦</span> Lépésről lépésre</div>
+      </div>
     </section>
-    <section aria-labelledby="posts-title"><h2 id="posts-title">Friss bejegyzések</h2><div id="posts"><p class="muted">Bejegyzések betöltése…</p></div></section>
+
+    <section class="values" id="kuldetes">
+      <article class="value-card"><span class="value-number">01</span><div class="value-icon">↗</div><h2>Haladj a saját utadon</h2><p>Apró lépésekből is komoly változás születhet. A saját tempód is érték.</p></article>
+      <article class="value-card"><span class="value-number">02</span><div class="value-icon">✳</div><h2>Oszd meg, amit megtanultál</h2><p>A mindennapi tapasztalatok másoknak kapaszkodót és bátorítást adhatnak.</p></article>
+      <article class="value-card"><span class="value-number">03</span><div class="value-icon">∞</div><h2>Nem vagy egyedül</h2><p>Egy közösség, ahol a történetek, a kitartás és az emberség összeköt.</p></article>
+    </section>
+
+    <section class="stories" id="bejegyzesek">
+      <div class="section-heading">
+        <div><div class="eyebrow"><span></span> Közösségünk hangjai</div><h2>Friss <em>történetek</em></h2></div>
+        <p>Minden történet egy újabb bizonyíték arra, hogy van tovább.</p>
+      </div>
+      <div id="posts" class="posts-grid"><p class="muted">Bejegyzések betöltése…</p></div>
+      <div class="share-strip"><div><strong>Van egy történeted?</strong><p>Lehet, hogy pont a te tapasztalatod ad erőt valakinek.</p></div><a class="button button-primary" href="admin.html">Megosztom <span>↗</span></a></div>
+    </section>
   </main>
-  <footer>DiabeticHammer · Cukorbetegen is lehet! · <a href="admin.html">Szerkesztő</a></footer>
+
+  <footer><a class="footer-brand" href="#top">DiabeticHammer</a><span>Cukorbetegen is lehet!</span><a href="admin.html">Szerkesztő</a><small>Az oldal közösségi tapasztalatokat oszt meg, nem helyettesíti az orvosi tanácsadást.</small></footer>
   <script src="site.js"></script>
 </body>
 </html>

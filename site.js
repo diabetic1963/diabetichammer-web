@@ -32,7 +32,7 @@ async function loadPosts() {
     if (!response.ok) throw new Error("A bejegyzések most nem érhetők el.");
     const issues = await response.json();
     const posts = issues
-      .filter(item => !item.pull_request && item.user?.login === "diabetic1963" && item.title?.startsWith(POST_PREFIX))
+      .filter(item => !item.pull_request && item.title?.startsWith(POST_PREFIX))
       .map(item => ({ ...item, parsed: sectionsFromIssue(item.body, item.title) }))
       .filter(item => item.parsed.story)
       .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));

@@ -33,6 +33,7 @@ export default async (request) => {
   }
 
   let imageUrl = "";
+  let uploadedImage = null;
   if (data.image) {
     const image = data.image;
     const allowed = { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp" };
@@ -52,6 +53,8 @@ export default async (request) => {
       body: JSON.stringify({ message: "Upload daily post photo", content: image.base64 })
     });
     if (!upload.ok) return json({ error: "A fényképet nem sikerült feltölteni. A bejegyzés nem jelent meg." }, 502);
+    const uploadResult = await upload.json();
+    uploadedImage = { path: `uploads/${filename}`, sha: uploadResult.content?.sha };
     imageUrl = `https://raw.githubusercontent.com/diabetic1963/diabetichammer-web/main/uploads/${filename}`;
   }
 
@@ -66,6 +69,20 @@ export default async (request) => {
     },
     body: JSON.stringify({ title: `[BEJEGYZÉS] ${title}`, body: markdown })
   });
-  if (!issue.ok) return json({ error: "A GitHub nem fogadta el a bejegyzést. Ellenőrizni kell a szerver hozzáférését." }, 502);
+  if (!issue.ok) {
+    if (uploadedImage?.sha) {
+      await fetch(`https://api.github.com/repos/diabetic1963/diabetichammer-web/contents/${uploadedImage.path}`, {
+        method: "DELETE",
+        headers: {
+          "Accept": "application/vnd.github+json",
+          "Authorization": `Bearer ${githubToken}`,
+          "X-GitHub-Api-Version": "2022-11-28",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ message: "Remove orphaned daily post photo", sha: uploadedImage.sha })
+      }).catch(() => {});
+    }
+    return json({ error: "A GitHub nem fogadta el a bejegyzést. A sikertelen bejegyzéshez feltöltött képet is megpróbáltam eltávolítani." }, 502);
+  }
   return json({ success: true });
 };

@@ -3,26 +3,37 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101820">
-  <title>DiabeticHammer – Új bejegyzés</title>
+  <meta name="theme-color" content="#0b1518">
+  <meta name="description" content="Oszd meg a DiabeticHammer közösséggel a saját történetedet és tapasztalataidat.">
+  <title>DiabeticHammer – Történet megosztása</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header><h1>DiabeticHammer</h1><p>Új bejegyzés</p></header>
-  <main>
-    <section class="welcome">
-      <h2>Írj új történetet!</h2>
-      <p>Itt tudsz új bejegyzést indítani. A Közzététel gomb a GitHub biztonságos szerkesztőjét nyitja meg, ahol bejelentkezés után elküldheted a szöveget.</p>
-      <ol>
-        <li>Adj címet a történetnek.</li>
-        <li>Írd meg a bejegyzést.</li>
-        <li>Ha képet is szeretnél, a GitHub szövegmezőjébe csatolhatod.</li>
-        <li>A végén nyomd meg a „Submit new issue” gombot. Ezután a bejegyzés megjelenik a főoldalon.</li>
-      </ol>
-      <p><a class="publish-link" href="https://github.com/diabetic1963/diabetichammer-web/issues/new?template=post.yml">Új bejegyzés közzététele</a></p>
-      <p class="muted">Fontos: a próbaoldal és a bejegyzések nyilvánosak. Ne írj személyes, egészségügyi vagy más bizalmas adatot. A bejegyzés a GitHubon is megjelenik.</p>
-      <p><a href="./">Vissza a főoldalra</a></p>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="DiabeticHammer – főoldal"><span class="brand-mark">DH</span><span class="brand-name">Diabetic<span>Hammer</span></span></a>
+    <nav aria-label="Fő navigáció"><a href="./#kuldetes">Küldetésünk</a><a href="./#bejegyzesek">Történetek</a><a class="nav-cta" href="./">Vissza a főoldalra</a></nav>
+  </header>
+  <main class="admin-main">
+    <section class="admin-hero">
+      <div class="eyebrow"><span></span> A te történeted is számít</div>
+      <h1>Oszd meg, ami <em>erőt ad.</em></h1>
+      <p class="hero-lead">Egy tapasztalat, egy apró siker vagy egy nehezebb nap története másnak sokat jelenthet. Köszönjük, hogy hozzájárulsz a közösséghez.</p>
     </section>
+    <section class="admin-panel">
+      <div class="admin-panel-heading"><span class="value-icon">✍</span><div><h2>Új bejegyzés beküldése</h2><p class="muted">A beküldés a GitHub biztonságos űrlapján történik.</p></div></div>
+      <ol class="steps">
+        <li><span>01</span><div><strong>Adj címet a történetednek</strong><p>Legyen rövid és kifejező, hogy az olvasók tudják, miről szól.</p></div></li>
+        <li><span>02</span><div><strong>Írd le a tapasztalatodat</strong><p>Fogalmazz a saját szavaiddal. Képet is csatolhatsz a beküldő űrlapon.</p></div></li>
+        <li><span>03</span><div><strong>Küldd be ellenőrzésre</strong><p>A beküldés után a történet a főoldalon jelenhet meg, ha megfelel az oldal szabályainak.</p></div></li>
+      </ol>
+      <a class="button button-primary admin-submit" href="https://github.com/diabetic1963/diabetichammer-web/issues/new?template=post.yml" target="_blank" rel="noopener noreferrer">Tovább a beküldő űrlaphoz <span>↗</span></a>
+      <p class="admin-note"><strong>Fontos tudnivaló:</strong> a beküldéshez GitHub-bejelentkezés szükséges. A bejegyzés és a csatolt kép nyilvánossá válhat. Ne adj meg jelszót, lakcímet, telefonszámot, azonosítót, leletet vagy más bizalmas egészségügyi adatot.</p>
+    </section>
+    <p class="admin-back"><a href="./">← Vissza a DiabeticHammer főoldalára</a></p>
   </main>
+  <footer><a class="footer-brand" href="./">DiabeticHammer</a><span>Cukorbetegen is lehet!</span><small>Az oldal közösségi tapasztalatokat oszt meg, nem helyettesíti az orvosi tanácsadást.</small></footer>
 </body>
 </html>

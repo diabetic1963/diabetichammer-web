@@ -3,11 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5f4ed">
+  <meta name="theme-color" content="#174d3b">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://diabetichammer.hu/">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23174d3b'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='Arial' font-size='22' font-weight='700' fill='%23d4ed83'%3EDH%3C/text%3E%3C/svg%3E">
   <meta name="description" content="DiabeticHammer – őszinte történetek, mozgás és mindennapi tapasztalatok cukorbetegséggel. Cukorbetegen is lehet!">
   <meta property="og:type" content="website">
   <meta property="og:title" content="DiabeticHammer – Cukorbetegen is lehet!">
   <meta property="og:description" content="Valódi tapasztalatok, mozgás és élet cukorbetegséggel.">
+  <meta property="og:url" content="https://diabetichammer.hu/">
+  <meta name="twitter:card" content="summary">
   <title>DiabeticHammer – Cukorbetegen is lehet!</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +20,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Ugrás a tartalomhoz</a>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="DiabeticHammer főoldal">
       <span class="brand-mark">DH</span><span class="brand-name">Diabetic<span>Hammer</span></span>
@@ -23,11 +29,11 @@
       <a href="#bemutatkozas">A küldetés</a><a href="#mindennapok">Mindennapok</a><a href="#bejegyzesek">Írások</a>
     </nav>
   </header>
-  <main id="top">
-    <section class="hero">
+  <main id="main-content" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
         <div class="eyebrow"><span></span> Személyes történet · Aktív élet</div>
-        <h1>Cukorbetegen is <em>lehet.</em></h1>
+        <h1 id="hero-title">Cukorbetegen is <em>lehet.</em></h1>
         <p class="hero-lead">A cukorbetegség része az életemnek, de nem ez határoz meg teljesen. Itt a mozgásról, a hétköznapi kihívásokról, a kitartásról és azokról a pillanatokról olvashatsz, amelyekért érdemes újra és újra elindulni.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#bemutatkozas">Ismerd meg a történetet <span>↗</span></a>
@@ -35,7 +41,7 @@
         </div>
         <div class="hero-note"><span class="note-line"></span> Nem tökéletes napok. Valódi tapasztalatok. Lépésről lépésre.</div>
       </div>
-      <div class="hero-art" aria-label="DiabeticHammer jelvény">
+      <div class="hero-art" role="img" aria-label="DiabeticHammer jelvény, erő, kitartás és élet">
         <div class="hero-disc"><span class="disc-kicker">DIABETIC</span><strong>HAMMER</strong><span class="disc-line"></span><span class="disc-motto">ERŐ · KITARTÁS · ÉLET</span></div>
         <span class="orbit-label orbit-label-one">MOZGÁS</span><span class="orbit-label orbit-label-two">TUDATOSSÁG</span>
       </div>

@@ -129,3 +129,10 @@ footer>small{grid-column:1/-1}
   #post-form input:not([type=file]),#post-form textarea{font-size:16px;padding:13px}
   #post-form textarea{min-height:190px}
 }
+
+
+/* Szemelyes fotogaleria */
+.journey-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:start}
+.journey-gallery .journey-photo{max-width:none;width:100%;height:100%;box-sizing:border-box}
+.journey-gallery .journey-photo img{height:360px;max-height:360px;object-fit:cover}
+@media(max-width:760px){.journey-gallery{grid-template-columns:1fr;gap:16px}.journey-gallery .journey-photo img{height:auto;max-height:620px;object-fit:contain}}

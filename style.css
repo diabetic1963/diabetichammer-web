@@ -74,3 +74,58 @@ footer small{max-width:760px}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{scroll-behavior:auto!important;transition:none!important}
 }
+
+/* Napi írás szerkesztő – reszponzív megjelenés */
+.site-header{min-height:76px;padding:14px clamp(18px,6vw,72px);display:flex;align-items:center;justify-content:space-between;gap:22px;background:var(--black);color:var(--white);border-bottom:1px solid #ffffff20}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;white-space:nowrap}
+.brand-mark{display:grid;place-items:center;width:42px;height:42px;background:var(--orange);color:var(--black);font-weight:800;letter-spacing:-2px}
+.brand-name{font-weight:800;letter-spacing:.5px}
+.brand-name span{color:var(--orange)}
+.site-header nav{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.site-header nav a{font-size:13px;color:var(--white);text-decoration:none}
+.site-header nav a:hover{color:var(--yellow)}
+.admin-main{width:min(100% - 40px,900px);margin:0 auto;padding:62px 0 85px}
+.admin-hero{max-width:760px;margin:0 auto 36px}
+.admin-hero .eyebrow{margin-bottom:22px}
+.admin-hero h1{font:normal clamp(42px,7vw,72px)/1.04 "Archivo Black",Impact,sans-serif;letter-spacing:-2px;margin:0 0 22px}
+.admin-hero h1 em{font-style:normal;color:var(--orange)}
+.hero-lead{font-size:17px;line-height:1.8;color:#65685f;margin:0}
+.admin-panel{background:var(--white);border:1px solid var(--line);border-radius:4px;padding:clamp(22px,5vw,48px);box-shadow:0 12px 35px #1113100b}
+.admin-panel-heading{display:flex;align-items:flex-start;gap:16px;margin-bottom:30px}
+.value-icon{display:grid;place-items:center;flex:0 0 48px;height:48px;background:var(--yellow);font-size:23px}
+.admin-panel-heading h2{font:normal clamp(27px,4vw,38px)/1.15 "Archivo Black",Impact,sans-serif;margin:0 0 8px}
+.admin-panel-heading .muted{margin:0}
+#post-form{display:grid;grid-template-columns:1fr;gap:10px}
+#post-form label{display:block;font-size:14px;font-weight:800;margin-top:9px}
+#post-form input:not([type=file]),#post-form textarea{display:block;width:100%;min-width:0;border:1px solid #c9c6bc;border-radius:4px;background:#fff;padding:14px 15px;color:var(--black);font:16px/1.5 "DM Sans",Arial,sans-serif}
+#post-form textarea{min-height:220px;resize:vertical}
+#post-form input:focus,#post-form textarea:focus{outline:3px solid #ff653844;border-color:var(--orange)}
+#post-form input[type=file]{display:block;width:100%;max-width:100%;font:14px "DM Sans",Arial,sans-serif;margin:7px 0}
+.photo-field{display:grid;gap:8px;margin-top:10px}
+.photo-preview{display:none;width:100%;max-height:360px;object-fit:contain;background:#eee;border:1px solid var(--line);padding:5px}
+.admin-submit{border:0;cursor:pointer;margin-top:18px;justify-content:center;width:100%;font:800 15px "DM Sans",Arial,sans-serif}
+.admin-submit:disabled{opacity:.6;cursor:wait}
+#status{min-height:24px;margin:8px 0 0;font-weight:700}
+.admin-note{font-size:12px;line-height:1.7;color:#77796f;margin:24px 0 0}
+.admin-back{margin-top:25px;font-size:13px;font-weight:700}
+.admin-back a{text-decoration:none;border-bottom:1px solid var(--orange);padding-bottom:3px}
+footer .footer-brand{font:20px "Archivo Black";text-decoration:none}
+footer>span{font-size:10px;letter-spacing:2px;color:#b4b5aa}
+footer>small{grid-column:1/-1}
+@media(max-width:760px){
+  .site-header{align-items:flex-start;flex-direction:column;gap:13px;padding:14px 20px}
+  .site-header nav{width:100%;gap:10px 18px}
+  .site-header nav a{font-size:12px}
+  .admin-main{width:calc(100% - 32px);padding:42px 0 60px}
+  .admin-hero{margin-bottom:27px}
+  .admin-hero h1{font-size:clamp(39px,11vw,58px);letter-spacing:-1.5px}
+  .hero-lead{font-size:15px;line-height:1.7}
+  .admin-panel{padding:21px 17px}
+  .admin-panel-heading{gap:12px;margin-bottom:22px}
+  .value-icon{flex-basis:40px;height:40px}
+  .admin-panel-heading h2{font-size:27px}
+  #post-form{gap:8px}
+  #post-form label{font-size:14px;margin-top:8px}
+  #post-form input:not([type=file]),#post-form textarea{font-size:16px;padding:13px}
+  #post-form textarea{min-height:190px}
+}

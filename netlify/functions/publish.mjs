@@ -1,3 +1,5 @@
+import { getStore } from "@netlify/blobs";
+
 function json(data, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
@@ -16,8 +18,7 @@ export default async (request) => {
   if (request.method !== "POST") return json({ error: "Nem támogatott kérés." }, 405);
 
   const expectedPassword = process.env.ADMIN_PASSWORD;
-  const githubToken = process.env.GITHUB_TOKEN;
-  if (!expectedPassword || !githubToken) return json({ error: "A közzététel szerveroldali beállítása még hiányzik." }, 503);
+  if (!expectedPassword) return json({ error: "A szerkesztő jelszava még nincs beállítva." }, 503);
 
   const suppliedPassword = (request.headers.get("authorization") || "").replace(/^Bearer\s+/i, "");
   if (!safeEqual(suppliedPassword, expectedPassword)) return json({ error: "Hibás szerkesztői jelszó." }, 401);
@@ -32,57 +33,27 @@ export default async (request) => {
     return json({ error: "Adj meg címet és szöveget. A cím legfeljebb 120, a szöveg 20 000 karakter lehet." }, 400);
   }
 
-  let imageUrl = "";
-  let uploadedImage = null;
+  let image = null;
   if (data.image) {
-    const image = data.image;
-    const allowed = { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp" };
-    if (!allowed[image.type] || typeof image.base64 !== "string" || image.base64.length > 5_600_000) {
+    const allowed = ["image/jpeg", "image/png", "image/webp"];
+    if (!allowed.includes(data.image.type) || typeof data.image.base64 !== "string" || data.image.base64.length > 5_600_000) {
       return json({ error: "A fénykép formátuma vagy mérete nem megfelelő." }, 400);
     }
-    const safeName = String(image.name || "foto").replace(/[^a-zA-Z0-9._-]/g, "-").slice(-80);
-    const filename = `${Date.now()}-${safeName.replace(/\.[^.]+$/, "")}.${allowed[image.type]}`;
-    const upload = await fetch("https://api.github.com/repos/diabetic1963/diabetichammer-web/contents/uploads/" + filename, {
-      method: "PUT",
-      headers: {
-        "Accept": "application/vnd.github+json",
-        "Authorization": `Bearer ${githubToken}`,
-        "X-GitHub-Api-Version": "2022-11-28",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ message: "Upload daily post photo", content: image.base64 })
-    });
-    if (!upload.ok) return json({ error: "A fényképet nem sikerült feltölteni. A bejegyzés nem jelent meg." }, 502);
-    const uploadResult = await upload.json();
-    uploadedImage = { path: `uploads/${filename}`, sha: uploadResult.content?.sha };
-    imageUrl = `https://raw.githubusercontent.com/diabetic1963/diabetichammer-web/main/uploads/${filename}`;
+    image = { type: data.image.type, data: `data:${data.image.type};base64,${data.image.base64}` };
   }
 
-  const markdown = `### Az írás címe\n\n${title}\n\n### A napi írásod\n\n${body}${imageUrl ? `\n\n![A bejegyzés fényképe](${imageUrl})` : ""}`;
-  const issue = await fetch("https://api.github.com/repos/diabetic1963/diabetichammer-web/issues", {
-    method: "POST",
-    headers: {
-      "Accept": "application/vnd.github+json",
-      "Authorization": `Bearer ${githubToken}`,
-      "X-GitHub-Api-Version": "2022-11-28",
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ title: `[BEJEGYZÉS] ${title}`, body: markdown })
-  });
-  if (!issue.ok) {
-    if (uploadedImage?.sha) {
-      await fetch(`https://api.github.com/repos/diabetic1963/diabetichammer-web/contents/${uploadedImage.path}`, {
-        method: "DELETE",
-        headers: {
-          "Accept": "application/vnd.github+json",
-          "Authorization": `Bearer ${githubToken}`,
-          "X-GitHub-Api-Version": "2022-11-28",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ message: "Remove orphaned daily post photo", sha: uploadedImage.sha })
-      }).catch(() => {});
-    }
-    return json({ error: "A GitHub nem fogadta el a bejegyzést. A sikertelen bejegyzéshez feltöltött képet is megpróbáltam eltávolítani." }, 502);
+  try {
+    const store = getStore("diabetichammer-posts");
+    const id = `${Date.now()}-${crypto.randomUUID()}`;
+    await store.setJSON(`post-${id}`, {
+      id,
+      title,
+      body,
+      image,
+      createdAt: new Date().toISOString()
+    });
+    return json({ success: true });
+  } catch {
+    return json({ error: "A bejegyzést most nem sikerült elmenteni. Kérlek, próbáld újra." }, 500);
   }
-  return json({ success: true });
 };

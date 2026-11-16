@@ -144,3 +144,37 @@ footer>small{grid-column:1/-1}
 
 /* Personal story and achievements */
 .story-section{background:#f0efe8}.story-layout{display:grid;grid-template-columns:1fr 1fr;gap:70px;margin-top:28px;align-items:start}.story-layout h2,.achievement-heading h2{font:normal clamp(42px,6vw,76px)/.96 "Archivo Black",Impact,sans-serif;letter-spacing:-2px;margin:0}.story-layout h2 em,.achievement-heading h2 em{font-style:normal;color:var(--orange)}.story-lead{font-size:20px;font-weight:700;line-height:1.7;max-width:480px;color:#33372f}.story-copy{max-width:590px}.story-copy p{font-size:15px;line-height:1.9;color:#55594f;margin:0 0 16px}.story-copy blockquote{margin:26px 0;padding:18px 22px;border-left:4px solid var(--orange);font-size:clamp(20px,2.5vw,28px);font-weight:800;line-height:1.35;color:#20231e}.story-copy small{display:block;color:#77796f;font-size:11px;line-height:1.7}.achievement-section{background:#0a1a28;color:#f4f2e9;max-width:none;padding-left:max(35px,calc((100% - 1170px)/2));padding-right:max(35px,calc((100% - 1170px)/2))}.achievement-section .section-label{color:#c9c9bd}.achievement-heading{display:grid;grid-template-columns:1.1fr .8fr;gap:55px;align-items:end;margin-top:25px}.achievement-heading h2{font-size:clamp(37px,5vw,65px)}.achievement-heading p{color:#c7c7bd;font-size:14px;line-height:1.9;max-width:430px}.achievement-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:38px}.achievement-card{min-height:220px;padding:25px;background:#122638;border:1px solid #ffffff20;display:flex;flex-direction:column;align-items:flex-start;gap:12px}.achievement-card span{font-size:10px;letter-spacing:2px;color:var(--yellow);font-weight:800}.achievement-card strong{font:25px/1.12 "Archivo Black",Impact,sans-serif;color:#fff}.achievement-card b{font-size:19px;color:var(--orange)}.achievement-card small{font-size:12px;color:#b9c0c4;line-height:1.6}.story-section .section-label span,.achievement-section .section-label span{font-size:18px}@media(max-width:760px){.story-layout{grid-template-columns:1fr;gap:15px}.story-layout h2{font-size:52px}.story-lead{font-size:17px}.achievement-section{padding:70px 22px}.achievement-heading{grid-template-columns:1fr;gap:10px}.achievement-heading h2{font-size:42px}.achievement-grid{grid-template-columns:1fr}.achievement-card{min-height:175px}}
+
+
+/* Mobilnezet: felesleges ures fekete savok es tulfutas javitasa */
+@media(max-width:760px){
+  html,body{max-width:100%;overflow-x:hidden}
+  .section{padding-top:44px;padding-bottom:44px}
+  .daily{padding:44px 0}
+  .daily-inner{padding-left:18px;padding-right:18px}
+  .personal-gallery{padding-top:42px;padding-bottom:42px}
+  .gallery-heading{margin-bottom:18px}
+  .journey-gallery{gap:10px}
+  .journey-gallery .journey-photo{margin:0;padding:0;background:transparent}
+  .journey-gallery .journey-photo img{
+    display:block;
+    width:100%;
+    height:auto;
+    max-height:620px;
+    object-fit:contain;
+    background:transparent
+  }
+  .manifesto h2,.story-layout h2,.achievement-heading h2{
+    max-width:100%;
+    overflow-wrap:anywhere;
+    word-break:normal;
+    font-size:clamp(36px,10vw,52px);
+    letter-spacing:-1.5px
+  }
+  .manifesto-grid{gap:12px}
+  .manifesto-copy,.story-copy,.daily-head>p,.stories-head>p{min-width:0}
+  .quote-band{padding-top:36px;padding-bottom:36px}
+  .topic-card{min-height:260px}
+  .story-layout{gap:12px}
+  .achievement-grid{gap:10px}
+}

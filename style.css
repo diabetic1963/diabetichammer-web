@@ -159,9 +159,10 @@ footer>small{grid-column:1/-1}
   .journey-gallery .journey-photo img{
     display:block;
     width:100%;
-    height:auto;
-    max-height:620px;
-    object-fit:contain;
+    height:clamp(260px,75vw,470px);
+    max-height:none;
+    object-fit:cover;
+    object-position:center;
     background:transparent
   }
   .manifesto h2,.story-layout h2,.achievement-heading h2{

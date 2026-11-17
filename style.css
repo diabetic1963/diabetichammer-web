@@ -135,7 +135,7 @@ footer>small{grid-column:1/-1}
 .journey-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;align-items:start}
 .journey-gallery .journey-photo{max-width:none;width:100%;height:auto;box-sizing:border-box;padding:0;border:0;box-shadow:none}
 .journey-gallery .journey-photo img{height:auto;max-height:none;object-fit:contain}
-@media(max-width:760px){.journey-gallery{grid-template-columns:1fr;gap:4px}.journey-gallery .journey-photo img{height:auto;max-height:none;object-fit:contain}}
+@media(max-width:760px){.journey-gallery{grid-template-columns:1fr;gap:4px}.journey-gallery .journey-photo img{display:block;width:100%;height:clamp(260px,75vw,470px);max-height:none;object-fit:cover;object-position:center}}
 
 
 /* Contact section */
